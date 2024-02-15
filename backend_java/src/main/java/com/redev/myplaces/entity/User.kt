@@ -10,11 +10,9 @@ data class User(
         @Id
         @GeneratedValue(generator = "UUID")
         @GenericGenerator(name="UUID", strategy = "org.hibernate.id.UUIDGenerator")
-        val id: String?,
-        val userName: String?,
-        val displayName: String?,
+        val id: String,
+        val userName: String,
+        val displayName: String,
         val email: String,
         val password: String,
-) {
-        constructor() : this(null,null,"","","")
-}
+)

@@ -1,7 +1,6 @@
 package com.redev.myplaces.service;
 
 import com.redev.myplaces.entity.User;
-import com.redev.myplaces.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,12 +21,11 @@ public class AuthenticateService implements UserDetailsService {
         if(user == null) throw new UsernameNotFoundException("");
         List<String> roles = new ArrayList<>();
         roles.add("USER");
-        UserDetails userDetails =
-                org.springframework.security.core.userdetails.User.builder()
-                        .username(user.getEmail())
-                        .password(user.getPassword())
-                        .roles(roles.toArray(new String[0]))
-                        .build();
-        return userDetails;
+
+        return org.springframework.security.core.userdetails.User.builder()
+                .username(user.getEmail())
+                .password(user.getPassword())
+                .roles(roles.toArray(new String[0]))
+                .build();
     }
 }

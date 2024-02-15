@@ -40,7 +40,7 @@ public class AuthenticateController {
             return ResponseEntity.ok(new UserDto(user.getId(), user.getUserName(), user.getDisplayName(), user.getEmail(), token));
 
         }catch (BadCredentialsException e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid username or password");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Kullanıcı adı veya şifre hatalı.");
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
