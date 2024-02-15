@@ -2,16 +2,19 @@ package com.redev.myplaces.entity
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import org.hibernate.annotations.GenericGenerator
 
 @Entity
 data class User(
-        @field:Id
-        @field:GeneratedValue(strategy = GenerationType.IDENTITY)
-        val Id: Long,
-        val userName: Long,
-        val displayName: String,
+        @Id
+        @GeneratedValue(generator = "UUID")
+        @GenericGenerator(name="UUID", strategy = "org.hibernate.id.UUIDGenerator")
+        val id: String?,
+        val userName: String?,
+        val displayName: String?,
         val email: String,
         val password: String,
-)
+) {
+        constructor() : this(null,null,"","","")
+}
